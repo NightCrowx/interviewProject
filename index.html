@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Table Output & Processing</title>
+</head>
+<body>
+    <!-- Display Table Data-->
+    <h2>Table 1</h2>
+  <table id="table1">
+    <tr><th>Index #</th><th>Value</th></tr>
+  </table>
+
+    <!-- Display Table Result-->
+    <h2>Table 2</h2>
+  <table>
+    <tr><th>Category</th><th>Value</th></tr>
+    <tr><td>Alpha</td><td id="alphaValue"></td></tr>
+    <tr><td>Beta</td><td id="betaValue"></td></tr>
+    <tr><td>Charlie</td><td id="charlieValue"></td></tr>
+  </table>
+
+
+  <script>
+    const table1Data = [
+    {index:"A1",value:41},
+    {index: "A2", value: 18},
+    {index: "A3", value: 21},
+    {index: "A4", value: 63},
+    {index: "A5", value: 2},
+    {index: "A6", value: 53},
+    {index: "A7", value: 5},
+    {index: "A8", value: 57},
+    {index: "A9", value: 60},
+    {index: "A10", value: 93},
+    {index: "A11", value: 28},
+    {index: "A12", value: 3},
+    {index: "A13", value: 90},
+    {index: "A14", value: 39},
+    {index: "A15", value: 80},
+    {index: "A16", value: 88},
+    {index: "A17", value: 49},
+    {index: "A18", value: 60},
+    {index: "A19", value: 26},
+    {index: "A20", value: 28}
+    ];
+
+      // Display table 1 data
+    const table1 = document.getElementById("table1");
+    table1Data.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${row.index}</td><td>${row.value}</td>`;
+      table1.appendChild(tr);
+    });
+
+    //Display table 2 data
+    const getVal = (key) => table1Data.find(item => item.index === key).value;
+    const alpha = getVal("A5") + getVal("A20");      
+    const beta = Math.floor(getVal("A15") / getVal("A7"));  
+    const charlie = getVal("A13") * getVal("A12");   
+
+    document.getElementById("alphaValue").textContent = alpha;
+    document.getElementById("betaValue").textContent = beta;
+    document.getElementById("charlieValue").textContent = charlie;
+
+
+
+  </script>
+</body>
+</html>
